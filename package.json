@@ -1,0 +1,33 @@
+{
+  "name": "bitsy-alexa-skill",
+  "version": "1.0.0",
+  "description": "Alexa Skills that allows you to get current cryptocurrency prices listed at Bitso.com",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node fake-invoke.js",
+    "deploy": "serverless deploy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "bitso",
+    "bitcoin",
+    "ethereum",
+    "ripple",
+    "exchange",
+    "cryptocurrency",
+    "cryptocurrencies",
+    "alexa-skill",
+    "alexa"
+  ],
+  "author": "Angel Malavar <angel.malavar@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-message-builder": "^1.2.0",
+    "alexa-skill-kit": "^1.0.0",
+    "dotenv": "^6.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {}
+}
