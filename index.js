@@ -1,7 +1,7 @@
 require('dotenv').load();
 
-const AlexaSkillKit = require('alexa-skill-kit')
-const AlexaMessageBuilder = require('alexa-message-builder')
+const AlexaSkillKit = require('alexa-skill-kit');
+const AlexaMessageBuilder = require('alexa-message-builder');
 const rp = require('request-promise');
 
 const { BITSO_URL } = process.env;
@@ -18,11 +18,8 @@ const getCurrencyDetails = (book = 'btc_mxn') => {
   return rp(options);
 };
 
-const bitsyAlexaSkill = (event, context, callback) => {
+const bitsyAlexaSkill = (event, context) => {
   AlexaSkillKit(event, context, (message) => {
-    console.log('====================================');
-    console.log(JSON.stringify(message, null, 2));
-
     if (message.intent && message.intent.name === 'GetCurrencyPrice') {
       const token = message.intent.slots.cryptoCurrency.value || 'btc_mxn';
       return getCurrencyDetails()
@@ -41,6 +38,8 @@ const bitsyAlexaSkill = (event, context, callback) => {
         `)
         .get();
     }
+
+    return 'Intento no reconocido.';
   });
 };
 
