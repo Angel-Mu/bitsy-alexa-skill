@@ -1,0 +1,51 @@
+{
+  "name": "bitsy-alexa-skill",
+  "version": "1.0.0",
+  "description": "Alexa Skills that allows you to get current cryptocurrency prices listed at Bitso.com",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "dev": "node fake-invoke.js",
+    "lint": "./node_modules/.bin/eslint --ext .js ./",
+    "lint:format": "./node_modules/.bin/eslint --fix --ext .js ./",
+    "lint:precommit": "./node_modules/.bin/eslint --fix --ext .js",
+    "precommit": "lint-staged",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bitso",
+    "bitcoin",
+    "ethereum",
+    "ripple",
+    "exchange",
+    "cryptocurrency",
+    "cryptocurrencies",
+    "alexa-skill",
+    "alexa"
+  ],
+  "author": "Angel Malavar <angel.malavar@gmail.com>",
+  "license": "ISC",
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:precommit",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "alexa-message-builder": "^1.2.0",
+    "alexa-skill-kit": "^1.0.0",
+    "dotenv": "^6.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.3",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0"
+  }
+}

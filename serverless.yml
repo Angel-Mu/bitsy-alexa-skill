@@ -1,0 +1,39 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: bitsy-alexa-skill
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+  environment:
+    BITSO_URL: ${file(./serverless.env.yml):BITSO_URL}
+package:
+  individually: true
+# The `functions` block defines what code to deploy
+functions:
+  bitsyAlexaSkill:
+    handler: index.handler
+    name: ${self:provider.stage}-${self:service} # optional, Deployed Lambda name
+    runtime: ${self:provider.runtime} # optional overwrite, default is provider runtime
+    package:
+      # We're excluding these files so they won't be in the final package of this function only
+      exclude:
+        - test/**
+        - package-lock.json
+        - .env.example
+        - .eslint*
+        - serverless.yml
+        - serverless.env.yml
+      excludeDevDependencies: true
+    memorySize: 1024 # optional, in MB, default is 1024
+    timeout: 20 # optional, in seconds, default is 6
+    events:
+      - alexaSkill: amzn1.ask.skill.${file(./serverless.env.yml):SKILL_ID}
