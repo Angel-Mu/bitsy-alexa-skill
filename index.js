@@ -8,19 +8,19 @@ const {
 
 const bitsyAlexaSkill = (event, context) => {
   AlexaSkillKit(event, context, (message) => {
-    const { intent: { name } = {}, type } = message;
-    if (name) {
+    const { type, intent } = message;
+    if (intent) {
+      const { name } = intent;
       switch (name) {
         case 'GetCurrencyPrice':
           return GetCurrencyPrice(message.intent);
         default:
-          break;
+          return 'Intento no reconocido.';
       }
     } else if (type === 'LaunchRequest') {
       return LaunchRequest();
     }
-
-    return 'Intento no reconocido';
+    return 'Mensaje no reconocido.';
   });
 };
 
