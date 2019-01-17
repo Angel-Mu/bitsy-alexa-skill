@@ -1,8 +1,6 @@
 const AlexaMessageBuilder = require('alexa-message-builder');
 const Bitsy = require('../controllers/Bitsy');
 
-const bitsy = new Bitsy();
-
 const GetCurrencyPrice = async (intent) => {
   const {
     slots: {
@@ -12,7 +10,7 @@ const GetCurrencyPrice = async (intent) => {
     } = { },
   } = intent;
 
-  const response = await bitsy.getTickerBook(book);
+  const response = await Bitsy.getTickerBook(book);
   const { payload: { bid } = {} } = response;
 
   return new AlexaMessageBuilder()
