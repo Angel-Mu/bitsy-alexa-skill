@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "serverless deploy",
+    "deploy:circleci": "serverless deploy --stage circleci",
     "dev": "node fake-invoke.js",
     "lint": "./node_modules/.bin/eslint --ext .js ./",
     "lint:format": "./node_modules/.bin/eslint --fix --ext .js ./",
