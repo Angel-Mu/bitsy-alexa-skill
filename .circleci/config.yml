@@ -61,7 +61,7 @@ workflows:
             branches:
               ignore:
                 - develop
-      - deploy-stage:
+      - deploy-dev:
           requires:
             - build
           filters:
