@@ -4,7 +4,8 @@
   "description": "Alexa Skills that allows you to get current cryptocurrency prices listed at Bitso.com",
   "main": "index.js",
   "scripts": {
-    "deploy": "serverless deploy --stage dev",
+    "deploy": "serverless deploy",
+    "deploy:dev": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage prod",
     "dev": "node fake-invoke.js",
     "lint": "./node_modules/.bin/eslint --ext .js ./",
