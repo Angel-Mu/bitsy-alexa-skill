@@ -17,16 +17,16 @@ executors:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+jobs:
+  build:
+    executor: prepare
+    steps:
       - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-jobs:
-  build:
-    executor: prepare
 
   deploy-dev:
     steps:
