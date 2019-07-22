@@ -14,7 +14,7 @@ provider:
   stage: ${opt:stage,'dev'}
   region: us-east-1
   environment:
-    BITSO_URL: ${file(./serverless.env.${self:provider.stage}.yml):BITSO_URL}
+    BITSO_URL: ${file(./serverless.env.circleci.yml):${self:provider.stage}.BITSO_URL}
 package:
   individually: true
 # The `functions` block defines what code to deploy
@@ -36,4 +36,4 @@ functions:
     memorySize: 1024 # optional, in MB, default is 1024
     timeout: 20 # optional, in seconds, default is 6
     events:
-      - alexaSkill: amzn1.ask.skill.${file(./serverless.env.${self:provider.stage}.yml):SKILL_ID}
+      - alexaSkill: amzn1.ask.skill.${file(./serverless.env.circleci.yml):${self:provider.stage}.SKILL_ID}
