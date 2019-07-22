@@ -4,10 +4,14 @@
 #
 version: 2.1
 executors:
-  prepare:
+  my-executor:
     docker:
       - image: circleci/node:8.10
     working_directory: ~/app
+
+jobs:
+  build:
+    executor: my-executor
     steps:
       - checkout
       # Download and cache dependencies
@@ -16,11 +20,6 @@ executors:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-jobs:
-  build:
-    executor: prepare
-    steps:
       - run: npm install
 
       - save_cache:
