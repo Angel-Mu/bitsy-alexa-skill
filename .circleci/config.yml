@@ -77,7 +77,7 @@ workflows:
   build-deploy-prod:
     jobs:
       - build:
-        filters: *filter-prod-branch
+          filters: *filter-prod-branch
       - hold: # <<< A job that will require manual approval in the CircleCI web application.
           type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
           requires: # We only run the "hold" job when test2 has succeeded
