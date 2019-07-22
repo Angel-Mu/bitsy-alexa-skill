@@ -8,10 +8,11 @@ aliases:
       only:
         - master
 
-  - &filter-feat-branches
+  - &filter-dev-branch
     branches:
       only:
-        - /feat\/.*/
+        - develop
+        - /feature-.*/
 
   - &root-restore-npm-cache
     keys:
@@ -69,7 +70,7 @@ workflows:
   build-deploy-dev:
     jobs:
       - build:
-          filters: *filter-feat-branches
+          filters: *filter-dev-branch
       - deploy-dev:
           requires:
             - build
@@ -85,4 +86,3 @@ workflows:
       - deploy-prod:
           requires:
             - hold
-          filters: *filter-prod-branch
