@@ -36,7 +36,7 @@ defaults: &defaults
 
 jobs:
   build:
-    <<: &defaults
+    <<: *defaults
     steps:
       - checkout
       # Download and cache dependencies
@@ -45,7 +45,7 @@ jobs:
       - save_cache: *save-cache
 
   deploy-dev:
-    <<: &defaults
+    <<: *defaults
     steps:
       - checkout
       # Download and cache dependencies
@@ -55,7 +55,7 @@ jobs:
       - run: npm run deploy:dev
 
   deploy-prod:
-    <<: &defaults
+    <<: *defaults
     steps:
       - checkout
       # Download and cache dependencies
@@ -73,6 +73,7 @@ workflows:
       - deploy-dev:
           requires:
             - build
+
   build-deploy-prod:
     jobs:
       - build:
