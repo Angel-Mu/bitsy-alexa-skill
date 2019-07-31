@@ -1,6 +1,6 @@
 {
   "name": "bitsy-alexa-skill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Alexa Skills that allows you to get current cryptocurrency prices listed at Bitso.com",
   "main": "index.js",
   "scripts": {
